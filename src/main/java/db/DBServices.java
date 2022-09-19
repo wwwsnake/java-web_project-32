@@ -15,7 +15,7 @@ public class DBServices implements IDBServices{
         ArrayList<Discipline> disciplines = new ArrayList<>();
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32","root","пароль от MySQL");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32","root","Madridist1989");
             //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
             Statement stmt = conn.createStatement(); //создаем запрос
             ResultSet rs = stmt.executeQuery("SELECT * FROM disciplines_of_term where status = '1'");
@@ -37,7 +37,7 @@ public class DBServices implements IDBServices{
     public void createDiscipline(String discipline) {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32","root","пароль от MySQL");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32","root","Madridist1989");
             //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
             Statement stmt = conn.createStatement(); //создаем запрос
             stmt.execute("INSERT INTO `disciplines_of_term` (`discipline_name`) VALUES ('" +  discipline +  "');\n");
@@ -49,6 +49,8 @@ public class DBServices implements IDBServices{
 
     @Override
     public Discipline getDisciplineById(String id) {
+
+
         return null;
     }
 
@@ -64,7 +66,29 @@ public class DBServices implements IDBServices{
 
     @Override
     public List<Student> gelAllActiveStudents() {
-        return null;
+
+        ArrayList<Student> students = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32","root","Madridist1989");
+            //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
+            Statement stmt = conn.createStatement(); //создаем запрос
+            ResultSet rs = stmt.executeQuery("SELECT * FROM students_32.student where status = '1'");
+
+            while (rs.next()){//пока есть следующая строка
+                Student student = new Student();
+                student.setId(rs.getInt("id"));
+                student.setSurname(rs.getString("surname"));
+                student.setName(rs.getString("name"));
+                student.setGroup(rs.getString("group"));
+                student.setDate(rs.getDate("date"));
+                students.add(student);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return students;
     }
 
     @Override
@@ -89,7 +113,26 @@ public class DBServices implements IDBServices{
 
     @Override
     public List<Term> gelAllActiveTerms() {
-        return null;
+        ArrayList<Term> terms = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32","root","Madridist1989");
+            //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
+            Statement stmt = conn.createStatement(); //создаем запрос
+            ResultSet rs = stmt.executeQuery("SELECT * FROM students_32.terms where status = '1'");
+
+            while (rs.next()){//пока есть следующая строка
+                Term term = new Term();
+                term.setId(rs.getInt("id"));
+                term.setTerm(rs.getString("term_name"));
+                term.setDuration(rs.getString("duration"));
+                terms.add(term);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return terms;
     }
 
     @Override
@@ -123,8 +166,26 @@ public class DBServices implements IDBServices{
     }
 
     @Override
-    public List<Role> getAllActiveRoles() {
-        return null;
+    public List<Role> getAllActiveRoles(){
+        ArrayList<Role> roles = new ArrayList<>();
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/students_32","root","Madridist1989");
+            //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
+            Statement stmt = conn.createStatement(); //создаем запрос
+            ResultSet rs = stmt.executeQuery("SELECT * FROM students_32.terms where status = '1'");
+
+            while (rs.next()){//пока есть следующая строка
+                Role role = new Role();
+                role.setId(rs.getInt("id"));
+                role.setRole(rs.getString("role"));
+                roles.add(role);
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+        return roles;
     }
 
     @Override
