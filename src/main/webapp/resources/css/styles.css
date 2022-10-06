@@ -1,237 +1,311 @@
 body {
-    background-color: lightgrey;
+    background-color: lightgray;
 }
 
-#title {
+.title {
     background-color: white;
     border: solid;
     text-align: center;
-    width: 70%;
+    width: 60%;
+    font-size: 30px;
+    margin-left: 20%;
 }
 
-.header {
-    display: flex;
+.logout_button {
+    font-size: 15px;
+    margin-left: 5px;
+    margin-top: 20px;
 }
 
-.center {
-    width: 70%;
-
-
-}
-
-.main {
+.to_title_button {
     margin-top: 30px;
-    display: flex;
-}
-
-/* индекс начало */
-
-.index {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-
-/* индекс конец */
-
-/* К титульной странице начало*/
-
-.center-title {
-    width: 70%;
-    display: flex;
-}
-
-#left-button {
-    margin-top: 40px;
-    text-align: left;
-}
-
-#center-button {
-    margin-top: 40px;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#right-button {
-    margin-top: 40px;
-    text-align: right;
-}
-
-/* К титульной странице конец*/
-
-.left-side {
-    width: 15%;
-    display: flex;
-}
-
-.right-side {
-    width: 15%;
-}
-.blue-button {
+    width: 7%;
     text-align: left;
     padding-left: 10px;
-
 }
 
-.logout {
-    margin-top: auto;
+.back_button{
+    margin-top: 30px;
 }
 
-/* Форма */
-
-.form {
-    display: block;
-    width: 50%;
-    text-align: right;
-}
-
-.grey-button {
-    border: solid 1px;
-    width: 100px;
+h1{
     text-align: center;
-    background-color: darkgray;
-    margin-left: 16%;
-}
-
-.form-term {
-    margin-top: 20px;
-    display: flex;
     width: 60%;
-    text-align: right;
+    font-size: 30px;
+    margin-left: 10%;
+    margin-top: 30px;
 }
-
-.left-part {
-    width: 200px;
-    margin-right: 10px;
-    text-align: center;
-}
-
-.grey-button-discipline {
-    border: solid 1px;
-    width: 100px;
-    text-align: center;
-    background-color: darkgray;
-    margin-top: 15px;
-    margin-left: 25.5%;
-}
-
-.error {
-    color: red;
-    font-style: italic;
-    font-weight: bold;
-}
-
-/* кнопки в центральном блоке студенческого листа*/
-
-.center-top-buttons {
-    display: flex;
-}
-
-.grey-button-top {
-    border: solid 1px;
-    height: 30px;
-    width: 400px;
-    text-align: center;
-    background-color: darkgray;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-}
-
-.text {
-    font-size: 22px;
-}
-/* таблица */
-
-/* внешние границы таблицы серого цвета толщиной 1px */
-table {
-    margin-top: 10px;
-    border: 1px solid dimgray;
-    border-collapse: collapse;
-    width: 100%;
-    height: 400px;
- }
- /* границы ячеек первого ряда таблицы */
- th {
-    padding-top: 60px;
-    padding-bottom: 20px;
-    border: 1px solid dimgrey;
- }
- /* границы ячеек тела таблицы */
- td {
-    border: 1px solid dimgrey;
- }
 
 .thead {
     background-color: darkgray;
 }
 
-.center-second-table {
-    margin-top: 15px;
-    margin-right: 15px;
+.error{
+    color: red;
+    font-size: 30px;
+    margin-top: 50px;
+    margin-left: 20%;
+    font-style: italic;
+}
+
+/*  Title Page: */
+#div_with_buttons {
+    width: 60%;
     display: flex;
+    margin-top: 30px;
+    padding-left: 20%;
+    font-size: 20px;
 }
 
-table.table-progress{
-    padding-top: 10px;
-    height: 100px;
+#students_button {
+    margin-top: 40px;
+    text-align: left;
 }
 
-table.table-progress th{
-    padding-top: 10px;
-}
-
-table.table-progress td{
-    padding-top: 10px;
-}
-
-.grey-button-list {
-    margin-top: 10px;
-    border: solid 1px;
-    width: 200px;
+#disciplines_button {
+    margin-top: 40px;
     text-align: center;
-    background-color: darkgray;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#terms_button {
+    margin-top: 40px;
+    text-align: right;
+}
+
+/* Students List: */
+
+#buttons {
+    width: 60%;
+    display: flex;
+    margin-top: 34px;
+    margin-bottom: 40px;
+    margin-left: 13%;
+}
+
+.left_button {
+    width: 350px;
+    height: 30px;
+    border: 2px black solid;
+    background-color: rgb(175, 175, 175);
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+
+.right_button {
+    width: 250px;
+    height: 30px;
+    border: 2px black solid;
+    background-color: rgb(175, 175, 175);
+    margin-bottom: 20px;
+}
+
+#text {
+    margin-left: 20%;
+    font-size: 20px;
+}
+
+
+#students_table {
+    margin-top: 10px;
+    border: 1px solid dimgray;
+    border-collapse: collapse;
+    width: 60%;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.th1 {
+    padding-top: 60px;
+    padding-bottom: 20px;
+    border: 1px solid dimgrey;
+}
+
+.td1 {
+    border: 1px solid dimgrey;
+    height: 100px;
+    text-align: center;
+}
+
+
+/* Student Modifying: */
+
+h1{
+    text-align: center;
+    width: 60%;
+    font-size: 30px;
+    margin-left: 10%;
+    margin-top: 30px;
+}
+
+.input_field{
+    width: 240px;
+    height: 30px;
+    margin-left: 10px;
+
+}
+.apply_button{
+    width: 155px;
+    height: 30px;
+    border: 1px black solid;
+    background-color: rgb(175, 175, 175);
+    margin-left: 30.5%;
+}
+.span1{
+    width: 30%;
+    text-align: right;
+    padding-top: 17px;
+}
+
+.student_fields{
+    display: flex;
+    margin-bottom: 30px;
+}
+
+#surname_field{
+    margin-top: 50px;
+}
+
+/* Student Progress: */
+
+#student_info {
+    margin-top: 10px;
+    border: 1px solid dimgray;
+    border-collapse: collapse;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.th2 {
+    height: 30px;
+    border: 1px solid dimgrey;
+}
+
+.td2 {
+    border: 1px solid dimgrey;
+    height: 30px;
+    text-align: center;
+}
+
+#student_marks {
+    margin-top: 50px;
+    border: 1px solid dimgray;
+    border-collapse: collapse;
+    width: 30%;
+    margin-left: 20%;
+
+}
+.th3 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 1px solid dimgrey;
+    text-align: left;
+}
+
+.td3 {
+    border: 1px solid dimgrey;
+    height: 100px;
+    text-align: left;
+}
+
+#selectvalue{
+    width: 200px;
+    height: 30px;
+}
+
+#choose_button{
+    width: 110px;
+    height: 30px;
+    border: 1px black solid;
+    background-color: rgb(175, 175, 175);
+}
+#term_choose{
+    width: 30%;
+    margin-top: 50px;
+    margin-left: 50px;
+    font-size: 25px;
+}
+
+#middle_mark{
+    margin-top: 30px;
+}
+
+/* Disciplines List: */
+
+#disciplines_list {
+    margin-top: 50px;
+    border: 1px solid dimgray;
+    border-collapse: collapse;
+    width: 30%;
+    margin-left: 20%;
+
+}
+.th4 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    border: 1px solid dimgrey;
+    text-align: center;
+}
+
+.td4 {
+    border: 1px solid dimgrey;
+    height: 100px;
+    text-align: left;
+}
+
+.discipline_modify_button{
+    width: 350px;
+    height: 30px;
+    border: 2px black solid;
+    background-color: rgb(175, 175, 175);
+    margin-top: 25px;
+    margin-left: 75px;
+}
+
+/* Discipline Creating & Modifying*/
+#h1_discipline_creating{
+    font-size: 25px;
+}
+#h1_discipline_modifying{
+    font-size: 22px;
+}
+
+.span3{
+    width: 23%;
+    text-align: right;
+    padding-top: 17px;
+}
+
+.apply_button1{
+    width: 155px;
+    height: 30px;
+    border: 1px black solid;
+    background-color: rgb(175, 175, 175);
+    margin-left: 23.5%;
+}
+/* Terms: */
+#discipline_name1{
+    text-align: left;
+}
+#term_choose1{
     margin-left: 16%;
-    font-weight: bold;
+    margin-top: 50px;
+    font-size: 20px;
 }
-
-table.table-discipline{
-    height: 100px;
+#span_choose_term{
+    margin-right: 30px;
 }
-
-table.table-discipline th{
-    padding-top: 15px;
-    height: 100px;
+.span2{
+    margin-left: 20%;
+    font-size: 20px;
+    margin-top: 30px;
 }
-
-table.table-discipline td{
-    padding-top: 10px;
-    height: 100px;
-}
-
-table.table-discipline th:nth-child(1) {
-    width: 140px;
-}
-
-table.table-discipline th:nth-child(2) {
-    width: 600px;
-}
-
-table.table-term-list{
-    height: 100px;
-}
-
-table.table-term-list th{
-    padding-top: 15px;
-    height: 100px;
-}
-
-table.table-term-list td{
-    padding-top: 10px;
-    height: 100px;
-}
-
-table.table-term-list th:nth-child(1) {
-    width: 600px;
+#choose1{
+    width: 240px;
+    height: 30px;
+    margin-left: 10px;
 }
