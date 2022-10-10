@@ -10,6 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.swing.SwingConstants.LEFT;
+
 public class DBServices implements IDBServices {
     @Override
     public List<Discipline> getAllActiveDisciplines() {
@@ -211,7 +213,7 @@ public class DBServices implements IDBServices {
             Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
             Statement stmt = conn.createStatement(); //создаем запрос
-            ResultSet rs = stmt.executeQuery("SELECT * FROM students_32.terms where status = '1'");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM students_32.role where status = '1'");
 
             while (rs.next()) {//пока есть следующая строка
                 Role role = new Role();
@@ -227,6 +229,22 @@ public class DBServices implements IDBServices {
 
     @Override
     public boolean canLogin(String login, String password, String idRole) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
+            Statement stmt = conn.createStatement(); //создаем запрос
+            ResultSet rs = stmt.executeQuery("SELECT * FROM user_role as ur\n" +
+                    "LEFT JOIN user as u on ur.id_user = u.id\n" +
+                    "WHERE u.login = '" +login + "' and u.password = '" + password + "'and ur.id_role = " + idRole);
+
+            while (rs.next()) {//пока есть следующая строка
+               return true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return false;
+
     }
 }

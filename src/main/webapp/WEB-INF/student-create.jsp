@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,8 +55,10 @@
     <div><input type="submit" value="Создать" class="apply_button"></div>
 </form>
 
+<c:if test="${error eq 1}">
+    <div class="error">Поля не должны быть пустыми!</div>
+</c:if>
 
-<div class="error">Поля не должны быть пустыми!</div>
 
 </body>
 
