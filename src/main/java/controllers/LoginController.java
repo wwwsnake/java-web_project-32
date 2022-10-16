@@ -1,5 +1,6 @@
 package controllers;
 //контроллер Логин/Логаут
+
 import db.DBServices;
 
 import javax.servlet.ServletException;
@@ -9,11 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet (name = "LoginController", urlPatterns = "/login")
+@WebServlet(name = "LoginController", urlPatterns = "/login")
 public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("WEB-INF/login.jsp").forward(req,resp);
+        req.getRequestDispatcher("WEB-INF/login.jsp").forward(req, resp);
     }
 
     @Override
@@ -23,11 +24,19 @@ public class LoginController extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
+        if (login==null || login.equals(("")) || password==null || password.equals((""))) {
+            req.setAttribute("error","1");
+            req.getRequestDispatcher("WEB-INF/login.jsp").forward(req,resp);
+        }
+
         DBServices dbServices = new DBServices();
-        if (dbServices.canLogin(login,password,role)){
+        if (dbServices.canLogin(login, password, role)) {
             req.getSession().setAttribute("isLogin", true); //проверяем залогинен уже или нет
-            req.getSession().setAttribute("role",role);
-resp.sendRedirect("/");
+            req.getSession().setAttribute("role", role);
+            resp.sendRedirect("/");
+        } else {
+            req.setAttribute("error",2);
+            req.getRequestDispatcher("WEB-INF/login.jsp").forward(req, resp);
         }
     }
 }

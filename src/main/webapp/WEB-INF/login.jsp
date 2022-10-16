@@ -14,7 +14,17 @@
 <div class="header">
     <div class="left-side"></div>
     <div id="title"><h1>Система управления студентами и их успеваемостью</h1></div>
-    <div class=" right-side blue-button logout"><span><a href = "">Logout</a></span></div>
+    <div class= "logout_button" href="/login" ><span>
+        <c:choose>
+            <c:when test="${isLogin eq true}">
+                <a href="/logout">Logout</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/login">Login</a>
+            </c:otherwise>
+        </c:choose>
+        </span>
+    </div>
 </div>
 <div class="main">
     <div class="left-side"><div class="blue-button"></div><div class="blue-button"></div></div>
@@ -33,6 +43,12 @@
             <div><input type="submit"  value="Войти" class="grey-button-discipline"><div style="width: 299px;"></div></div>
 
         </form>
+        <c:if test="{$error eq 2}">
+            <h4>Не верно ввели данные или не выбрана роль!</h4>
+        </c:if>
+        <c:if test="{$error eq 1}">
+            <h4>Поля не должны быть пустыми!</h4>
+        </c:if>
     </div>
     <div class="right-side blue-button"><span></span></div>
 </div>

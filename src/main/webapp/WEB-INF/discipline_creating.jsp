@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,10 +18,20 @@
     <div class="title">
         <span>Система управления студентами и их успеваемостью</span>
     </div>
-    <a class="logout_button" href="Logout">Logout</a>
+    <div class= "logout_button" href="/login" ><span>
+        <c:choose>
+            <c:when test="${isLogin eq true}">
+                <a href="/logout">Logout</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/login">Login</a>
+            </c:otherwise>
+        </c:choose>
+        </span>
+    </div>
 </div>
 <div style="display:flex;">
-    <div class="to_title_button"><a href="titlePage.html">На главную</a></div>
+    <div class="to_title_button"><a href="/">На главную</a></div>
     <div class="back_button"><a href="...">Назад</a></div>
     <h1 id="h1_discipline_creating">Для того чтобы создать новую дисциплину заполните все поля и нажмите кнопку
         "Создать":</h1>

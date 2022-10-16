@@ -32,8 +32,8 @@
 </div>
 <div id="div_with_buttons">
     <a id="students_button" href="/students">Студенты</a>
-    <a id="disciplines_button" href="Дисциплины">Дисциплины</a>
-    <a id="terms_button" href="Семестры">Семестры</a>
+    <a id="disciplines_button" href="/disciplines_list.jsp">Дисциплины</a>
+    <a id="terms_button" href="/terms_list.jsp">Семестры</a>
 </div>
 </body>
 

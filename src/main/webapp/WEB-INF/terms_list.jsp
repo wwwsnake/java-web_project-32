@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,17 +19,28 @@
     <div class="title">
         <span>Система управления студентами и их успеваемостью</span>
     </div>
-    <a class="logout_button" href="Logout">Logout</a>
+    <div class= "logout_button" href="/login" ><span>
+        <c:choose>
+            <c:when test="${isLogin eq true}">
+                <a href="/logout">Logout</a>
+            </c:when>
+            <c:otherwise>
+                <a href="/login">Login</a>
+            </c:otherwise>
+        </c:choose>
+        </span>
+    </div>
 </div>
 <div style="display:flex;">
-    <div id="to_title_button"><a href="titlePage.html">На главную</a></div>
+    <div id="to_title_button"><a href="/">На главную</a></div>
     <div id="term_choose1">
         <span id="span_choose_term">Выбрать семестр</span>
-        <select id="selectvalue">
-            <option>Семестр 1</option>
-            <option>Семестр 2</option>
+        <select name="idSelectedTerm" size="1">
+            <c:forEach items="${terms}" var="t">
+                <option value="${t.id}">${t.term}</option>
+            </c:forEach>
         </select>
-        <button id="choose_button">Выбрать</button> <br>
+        <div><input type="submit" value="Выбрать" id="choose_button"></div> <br>
     </div>
 </div>
 <div>
@@ -47,25 +61,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-
-            <td class="td4">Высшая математика</td>
-        </tr>
-        <tr>
-            <td class="td4">История Науки и Техники</td>
-        </tr>
-        <tr>
-
-            <td class="td4">Политология</td>
-        </tr>
-        <tr>
-
-            <td class="td4">Информатика</td>
-        </tr>
-        <tr>
-
-            <td class="td4">Теория Алгоритмизации</td>
-        </tr>
+      <c:forEach items="${disciplines}" var="d">
+          <tr>
+              <td class="td4">${d.disciplines}</td>
+          </tr>
+      </c:forEach>
         </tbody>
     </table>
 
