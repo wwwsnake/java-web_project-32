@@ -24,9 +24,9 @@ public class LoginController extends HttpServlet {
         String login = req.getParameter("login");
         String password = req.getParameter("password");
 
-        if (login==null || login.equals(("")) || password==null || password.equals((""))) {
-            req.setAttribute("error","1");
-            req.getRequestDispatcher("WEB-INF/login.jsp").forward(req,resp);
+        if (login == null || login.equals(("")) || password == null || password.equals((""))) {
+            req.setAttribute("error", "1");
+            req.getRequestDispatcher("WEB-INF/login.jsp").forward(req, resp);
         }
 
         DBServices dbServices = new DBServices();
@@ -35,7 +35,7 @@ public class LoginController extends HttpServlet {
             req.getSession().setAttribute("role", role);
             resp.sendRedirect("/");
         } else {
-            req.setAttribute("error",2);
+            req.setAttribute("error", 2);
             req.getRequestDispatcher("WEB-INF/login.jsp").forward(req, resp);
         }
     }

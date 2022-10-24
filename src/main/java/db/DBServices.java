@@ -51,19 +51,49 @@ public class DBServices implements IDBServices {
 
     @Override
     public Discipline getDisciplineById(String id) {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
+            Statement stmt = conn.createStatement(); //создаем запрос
+            ResultSet rs = stmt.executeQuery("SELECT * FROM students_32.disciplines_of_term where status = '1' and id = " + id);
 
-
+            while (rs.next()) {//пока есть следующая строка
+                Discipline discipline = new Discipline();
+                discipline.setId(rs.getInt("id"));
+                discipline.setDiscipline("discipline_name");
+                return discipline;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
+
     @Override
     public void modifyDiscipline(String id, String newDiscipline) {
-
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            Statement stmt = conn.createStatement();
+            stmt.execute("UPDATE `students_32`.`disciplines_of_term` SET `discipline_name` = '"+newDiscipline+"' WHERE (`id` = '"+id+"')");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void deleteDiscipline(String id) {
-
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
+            Statement stmt = conn.createStatement(); //создаем запрос
+            stmt.execute("UPDATE `students_32`.`disciplines_of_term` SET `status` = '0' WHERE (`id` = '" + id + "');");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -184,9 +214,10 @@ public class DBServices implements IDBServices {
             Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
             //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
             Statement stmt = conn.createStatement(); //создаем запрос
-            ResultSet rs = stmt.executeQuery(SELECT * FROM term_disciplines
-                    left join discipline as d on td.id_discipline = d.id
-                    where d.status = '1' and td.id_term = " +idTerm);
+            ResultSet rs = stmt.executeQuery("SELECT * FROM term_disciplines as td\n" +
+                    "LEFT JOIN discipline as d on td.id_discipline = d.id\n" +
+                    "WHERE d.status = '1' and td.id_term = " + idTerm);
+
 
             while (rs.next()) {//пока есть следующая строка
                Discipline discipline = new Discipline();
@@ -201,7 +232,14 @@ public class DBServices implements IDBServices {
 
     @Override
     public void createTerm(String duration, String idsDisciplines) {
-
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            Statement stmt = conn.createStatement();
+            stmt.execute("INSERT INTO  students_32.terms (duration,idsDisciplines) VALUES (('" + duration + "'),('" + idsDisciplines + "'));");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -233,7 +271,15 @@ public class DBServices implements IDBServices {
 
     @Override
     public void deleteTerm(String id) {
-
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");//подключаем драйвер для работы с БД
+            Connection conn = DriverManager.getConnection(Constants.URL_TO_DB, Constants.LOGIN_TO_DB, Constants.PASSWORD_TO_DB);
+            //создаем подключение к БД (localhost - этот комп, другой комп - пишем айпи), пишем логин и пароль от MySQL
+            Statement stmt = conn.createStatement(); //создаем запрос
+            stmt.execute("UPDATE `students_32`.`terms` SET `status` = '0' WHERE (`id` = '" + id + "');");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

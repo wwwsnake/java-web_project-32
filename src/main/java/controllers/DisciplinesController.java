@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet (name = "TermController", urlPatterns = "/terms_list.jsp")
-public class TermController extends HttpServlet {
+@WebServlet (name = "DisciplinesController", urlPatterns = "/disciplines_list.jsp")
+public class DisciplinesController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //1 - вытягиваем все активные семестры
@@ -43,3 +43,5 @@ public class TermController extends HttpServlet {
         }
     }
 }
+
+

@@ -33,6 +33,7 @@
 </div>
 <div style="display:flex;">
     <div id="to_title_button"><a href="/">На главную</a></div>
+    <form method="post" action="/terms_list.jsp">
     <div id="term_choose1">
         <span id="span_choose_term">Выбрать семестр</span>
         <select name="idSelectedTerm" size="1">
@@ -42,6 +43,7 @@
         </select>
         <div><input type="submit" value="Выбрать" id="choose_button"></div> <br>
     </div>
+    </form>
 </div>
 <div>
     <div class="span2"><span >Длительность семестра: 24 недели</span><br></div>

@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class LoginFilter implements  Filter {
+public class LoginFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -30,14 +30,13 @@ public class LoginFilter implements  Filter {
         }
 
 
-        Object isLogin = req.getSession().setAttribute("isLogin");
-        if (isLogin != null && url.endsWith("/login")) {
+        Object isLogin = req.getSession().getAttribute("isLogin");
+        if (isLogin != null && url.endsWith("/login")) { //5
             resp.sendRedirect("/");
             return;
-            ;
         }
 
-        if (isLogin != null && !url.endsWith("/login")) {
+        if (isLogin != null && !url.endsWith("/login")) { //4
             filterChain.doFilter(servletRequest, servletResponse);
             return;
         }
